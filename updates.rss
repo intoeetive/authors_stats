@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss 
+  version="2.0"
+  xmlns:ee_addon="http://ee-garage.com/nsm_addon_updater"
+>
+
+  <channel>
+    <title>Authors Stats</title>
+    <link>https://raw.github.com/intoeetive/authors_stats/master/README</link>
+    <description>Most recent changes with links to updates.</description>
+
+    <item>
+      <title>Version 0.1</title>
+      <!-- Additional tag required for NSM Addon Updater -->
+      <ee_addon:version>0.1</ee_addon:version>
+      <link>https://github.com/intoeetive/authors_stats</link>
+      <pubDate>2013-01-23T13:42:55+02:00</pubDate>
+      <description><![CDATA[
+        <ul>
+          <li>Initial release</li>
+        </ul>
+      ]]></description>
+    </item>
+    
+  </channel>
+
+</rss>
