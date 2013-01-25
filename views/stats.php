@@ -1,26 +1,10 @@
-<?php 
 
-$this->load->view('tabs'); 
-
-if ($total_count == 0) {
-	
-	?>
-	<div class="tableFooter">
-		<p class="notice"><?=lang('no_records')?></p>
-	</div>
-<?php 
-
-}
-else
-{
-
-?>
 
 <div id="filterMenu">
 	<fieldset>
 		<legend><?=lang('refine_results')?></legend>
 
-	<?=form_open('C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=affiliate_plus'.AMP.'method=stats');?>
+	<?=form_open('C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=authors_stats');?>
 
 		<div class="group">
             <?php
@@ -33,7 +17,7 @@ else
               'style'       => 'width:120px'
             );
 			
-			echo lang('dates_from').NBS.NBS.form_input($field);
+			echo lang('from').NBS.NBS.form_input($field);
 			
 			$field = array(
               'name'        => 'date_to',
@@ -43,21 +27,8 @@ else
               'style'       => 'width:120px'
             );
 			
-			echo lang('_to').NBS.NBS.form_input($field);
-			
-			echo NBS.NBS.NBS;
-			
-			echo lang('affiliate').$member_select.NBS.NBS.NBS;
-			
-			$perpage = array(
-				'25' => '25',
-				'50' => '50',
-				'100' => '100',
-				'0' => lang('all')
-			);
-			
-			echo BR.form_dropdown('perpage', $perpage, $selected['perpage']).NBS.lang('records').NBS.lang('per_page');
-            
+			echo NBS.lang('to').NBS.NBS.form_input($field);
+	
             echo NBS.NBS.form_submit('submit', lang('show'), 'class="submit" id="search_button"');
             
             ?>
@@ -67,25 +38,19 @@ else
 	</fieldset>
 </div>
 
+<h3><?=lang('from').' '.$date_from.' '.lang('to').' '.$date_to?></h3>
+
 
 <?php
-
-$this->table->set_template($cp_pad_table_template);
-$this->table->set_heading($table_headings);
-
 
 foreach ($data as $item)
 {
-	//var_dump($item);
-	$this->table->add_row($item['date'], $item['affiliate'] , $item['order'], $item['customer'], $item['commission'], $item['other1']);
+	echo '<h3>'.$item['member'].'</h3>';
+	foreach ($item['channels'] as $channel)
+	{
+		echo '<h4>'.$channel['channel_name'].'</h2>';
+		echo '<h4>'.$channel['channel_table'].'</h2>';
+	}
 }
 
-echo $this->table->generate();
-
-
-$this->table->clear();
-?>
-<span class="pagination"><?=$pagination?></span>
-<?php
-}
 ?>
